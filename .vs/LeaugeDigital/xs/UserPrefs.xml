@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{D6AA3605-A6ED-49C3-B11C-670DD5B533F4}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LeaugeDigital/Pages/Shared/_Layout.cshtml">
+    <Files>
+      <File FileName="LeaugeDigital/Models/Person.cs" Line="10" Column="44" />
+      <File FileName="LeaugeDigital/Pages/Index.cshtml.cs" />
+      <File FileName="LeaugeDigital/Pages/Index.cshtml" />
+      <File FileName="LeaugeDigital/wwwroot/objects.json" />
+      <File FileName="LeaugeDigital/Pages/Shared/_Layout.cshtml" Line="8" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="LeaugeDigital" expanded="True">
+            <Node name="LeaugeDigital" expanded="True">
+              <Node name="Models" expanded="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" selected="True" />
+                </Node>
+                <Node name="Index.cshtml" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="js" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.LeaugeDigital PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

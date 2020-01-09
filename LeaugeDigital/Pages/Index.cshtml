@@ -1,0 +1,207 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<style>
+    .card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.center {
+  margin: auto;
+
+}
+</style>
+
+  <button type="button" id="ModalBtn" class="btn btn-primary d-none" data-toggle="modal" data-target="#myModal" >
+ 
+  </button>
+
+  <button type="button" id="successModalBtn" class="btn btn-primary d-none" data-toggle="modal" data-target="#successModal" >
+ 
+  </button>
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Error Occured While Submitting Form</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+           @Model.Message
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="successModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Successfully Submited form</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+         @Model.Message 
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<div class="container " style="text-align:center">
+<div>
+    <h1>Welcome to Digital League Web Platform</h1>
+    <br/>
+    <p>We revolutionize digital marketing! Interested in hearing more ?</p>
+    <br/>
+</div>
+    
+<div class="card " style="display:inline-block; text-align:center;padding:40px;border-radius:10px;" align="center" >
+    <h2>Register for Free</h2>
+    <form method="post" name="ResultForm" onsubmit="return validateForm()">
+        <div class="row">
+            <div class="col">
+                  <div class="form-group">
+                      <div>
+                           <label>Start Date</label>
+                       </div>
+                      <div>
+                           <input asp-for="@Model.Person.StartDate" id="startdate" required/>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div>
+                      <label>End Date</label>
+                       </div>
+                      <div>
+                      <input asp-for="@Model.Person.EndDate" placeholder="30 Feb 2019" id="enddate" required/>
+                    </div>
+                  </div>
+         
+            <div class="form-group">
+                <div>
+                     <label>Name</label>
+                 </div>
+                <div>
+                     <input asp-for="@Model.Person.Name" placeholder="John" style="width:100%" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                <label>Email</label>
+                </div>
+                <div>
+                    <input asp-for="@Model.Person.Email" placeholder="John@gmail.com"style="width:100%" type="email" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                <label>Phone</label>
+                </div>
+                <div>
+                     <input asp-for="@Model.Person.PhoneNo" placeholder="0832136755" maxlength="10" type="tel"  style="width:100%" required/>
+                </div>
+            </div>
+           </div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</div>
+@if (Model.isReady)
+{
+<div class="container">
+    <div style="text-align:left;padding:10px;margin:10px;" >
+        <button onclick="redirect('index');"> Add Record</button>
+    </div>
+ <div class="row">
+    @foreach(var i in Model.People)
+    {
+        <div class="col-3" style="padding:10px;border-radius:10px;">
+        <div class="card" style="padding:10px;">
+
+           <div class="container">
+             <h4><b>Date</b></h4> 
+             <p>@i.timeDifference Days (@i.StartDate to @i.EndDate</p> 
+           </div>
+           <div class="container">
+             <h4><b>Name</b></h4> 
+             <p>@i.Name</p> 
+           </div>
+           <div class="container">
+             <h4><b>Email</b></h4> 
+             <p>@i.Email</p> 
+           </div>
+           <div class="container">
+             <h4><b>Phone No.</b></h4> 
+             <p>@i.PhoneNo</p> 
+           </div>
+        
+        </div>
+      </div>
+    }
+ </div>
+ 
+</div>
+}
+
+ 
+
+@section Scripts{
+  <script src="~/js/jquery.date-dropdowns.js"></script>
+  <script src="~/js/jquery.dataTables.min.js"></script>
+ <script>
+     function redirect(page) {
+         window.location = window.origin + "/" + page;
+     }
+     $("#startdate").dateDropdowns();
+     $("#enddate").dateDropdowns();
+   
+     var bool = '@Model.ErrorStatus';
+     var success = '@Model.isReady';
+     if (bool == 'True') {
+
+         $("#ModalBtn").click();
+     }
+     if (success == 'True') {
+           $(document).ready(function() {
+               $('#example').DataTable();
+           });
+         $("#successModalBtn").click();
+     }
+
+
+
+
+ </script>
+
+
+}
+
